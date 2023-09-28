@@ -170,4 +170,23 @@ function clearCalculator() {
     }
   }
 
+  function addDecimal() {
+    if (!decimalClicked) {
+      if (operator === '') {
+        if (firstNumber.indexOf('.') === -1) { // Check if decimal point already exists
+          firstNumber += '.';
+          displayValue += '.';
+        }
+      } else {
+        if (secondNumber.indexOf('.') === -1) { // Check if decimal point already exists
+          secondNumber += '.';
+          displayValue += '.';
+        }
+      }
+      updateDisplay();
+      decimalClicked = true;
+    }
+  }
+  
+
   
