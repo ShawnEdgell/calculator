@@ -4,11 +4,13 @@
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
+
+<div class="calculator-container">   
   <div class="calculator">
     <input id="result" type="text" readonly>
     <div class="buttons">
       <div class="clear-bs">
-        <button id="clear" onclick="refreshPage()">C</button>
+        <button id="clear" onclick="clearCalculator()">C</button>
         <button id="backspace" onclick="backspace()">&#9003;</button>
       </div>
       <button onclick="appendToDisplay('7')">7</button>
@@ -27,9 +29,10 @@
       <button id="decimal" onclick="addDecimal()">.</button>
       <button onclick="setOperator('+')">+</button>
       <button id="equal" onclick="calculate()">=</button>
+      <p id="copy">&copy; 2023 Calculator by Shawn Edgell</p>
     </div>
   </div>
+</div>
   <script src="app.js"></script>
-  <footer id="footer">2024 - Calculator by Shawn Edgell</footer>
 </body>
 </html>

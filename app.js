@@ -3,6 +3,8 @@ let operator = '';
 let secondNumber = '';
 let displayValue = '';
 let decimalClicked = false;
+let isDragging = false;
+let offsetX, offsetY;
 
 function appendToDisplay(value) {
   if (operator === '') {
@@ -88,6 +90,47 @@ function operate(operator, num1, num2) {
   }
 }
 
+// Center the calculator initially
+const calculatorContainer = document.querySelector('.calculator-container');
+const calculatorWidth = calculatorContainer.offsetWidth;
+const calculatorHeight = calculatorContainer.offsetHeight;
+const windowWidth = window.innerWidth;
+const windowHeight = window.innerHeight;
+
+calculatorContainer.style.left = (windowWidth - calculatorWidth) / 2 + 'px';
+calculatorContainer.style.top = (windowHeight - calculatorHeight) / 2 + 'px';
+
+// Rest of your JavaScript code for dragging
+// ...
+
+// Draggable calculator-container
+calculatorContainer.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  offsetX = e.clientX - calculatorContainer.getBoundingClientRect().left;
+  offsetY = e.clientY - calculatorContainer.getBoundingClientRect().top;
+});
+
+document.addEventListener('mousemove', (e) => {
+  if (isDragging) {
+    const left = e.clientX - offsetX;
+    const top = e.clientY - offsetY;
+
+    // Check if the calculator is within the bounds of the window
+    const maxWidth = window.innerWidth - calculatorContainer.offsetWidth;
+    const maxHeight = window.innerHeight - calculatorContainer.offsetHeight;
+
+    if (left >= 0 && left <= maxWidth && top >= 0 && top <= maxHeight) {
+      calculatorContainer.style.left = left + 'px';
+      calculatorContainer.style.top = top + 'px';
+    }
+  }
+});
+
+document.addEventListener('mouseup', () => {
+  isDragging = false;
+});
+
+
 // Keyboard support
 document.addEventListener('keydown', function(event) {
   const key = event.key;
@@ -101,12 +144,30 @@ document.addEventListener('keydown', function(event) {
     calculate();
   } else if (key === 'Backspace') {
     backspace();
-  }a
+  }
 });
 
-function refreshPage() {
-    location.reload();
+function clearCalculator() {
+    firstNumber = '';
+    operator = '';
+    secondNumber = '';
+    displayValue = '';
+    decimalClicked = false;
+    updateDisplay();
   }
+
+  function updateDisplay() {
+    const resultElement = document.getElementById('result');
+    const maxDisplayWidth = resultElement.offsetWidth;
   
-  
+    if (displayValue.length > 15) {
+      // If the displayed number is too long, format it as a power function
+      const power = displayValue.length - 1;
+      const base = displayValue[0] + (displayValue[1] || '');
+      resultElement.value = `${base}e${power}`;
+    } else {
+      resultElement.value = displayValue;
+    }
+  }
+
   

@@ -4,7 +4,6 @@ body {
 
 .calculator {
     width: 300px;
-    margin: 0 auto;
     text-align: center;
     padding: 20px;
     background: #f4f4f4;
@@ -14,6 +13,7 @@ body {
     flex-direction: column;
     align-items: center;
     background-color: #434343;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
   }
   
   .buttons button {
@@ -42,13 +42,14 @@ body {
     height: 40px;
     font-size: 36px;
     text-align: right;
-    margin: 0 0 10px 0;
+    margin: 10px 0 20px 0;
     background-color: #bebea4;
   }
   
   #backspace {
     background-color: #525252; /* Backspace button background color */
     color: #fff; /* Backspace button text color */
+    width: 114px;
     font-size: 20px;
   }
 
@@ -61,6 +62,7 @@ body {
   #clear {
     background-color: #525252; /* Clear button background color */
     color: #fff; /* Clear button text color */
+    width: 114px;
     font-size: 20px;
   }
 
@@ -68,20 +70,27 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 4px;
   }
 
-  #footer {
+  .calculator-container {
+    position: absolute;
+}
+
+.footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 2.5rem;
     text-align: center;
-    font-family: 'Courier New', Courier, monospace;
     background-color: #434343;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 0 10px 0;
-    font-size: 14px;
+    padding: 10px 0;
     color: white;
-  }
+    font-size: 14px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#copy {
+    color:#bebea4 ;
+    font-size: 11px;
+    font-family: 'Courier New', Courier, monospace;
+}
