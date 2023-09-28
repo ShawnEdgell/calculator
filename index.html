@@ -1,13 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
-    <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-    
+  <div class="calculator">
+    <input id="result" type="text" readonly>
+    <div class="buttons">
+      <div class="clear-bs">
+        <button id="clear" onclick="refreshPage()">C</button>
+        <button id="backspace" onclick="backspace()">&#9003;</button>
+      </div>
+      <button onclick="appendToDisplay('7')">7</button>
+      <button onclick="appendToDisplay('8')">8</button>
+      <button onclick="appendToDisplay('9')">9</button>
+      <button onclick="setOperator('/')">/</button>
+      <button onclick="appendToDisplay('4')">4</button>
+      <button onclick="appendToDisplay('5')">5</button>
+      <button onclick="appendToDisplay('6')">6</button>
+      <button onclick="setOperator('*')">*</button>
+      <button onclick="appendToDisplay('1')">1</button>
+      <button onclick="appendToDisplay('2')">2</button>
+      <button onclick="appendToDisplay('3')">3</button>
+      <button onclick="setOperator('-')">-</button>
+      <button onclick="appendToDisplay('0')">0</button>
+      <button id="decimal" onclick="addDecimal()">.</button>
+      <button onclick="setOperator('+')">+</button>
+      <button id="equal" onclick="calculate()">=</button>
+    </div>
+  </div>
+  <script src="app.js"></script>
+  <footer id="footer">2024 - Calculator by Shawn Edgell</footer>
 </body>
-<script src="app.js"></script>
 </html>
